@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation — Geneva Daugdaug Portfolio</title>
+  <title>Documentation - Geneva Daugdaug Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -371,14 +371,14 @@
       <h1>Portfolio Documentation</h1>
       <div class="divider"></div>
       <p class="doc-lead">
-        Complete reference for the Geneva Daugdaug personal portfolio website — a modern, dark-themed single-page application built with pure HTML, CSS, and JavaScript.
+        Complete reference for the Geneva Daugdaug personal portfolio website, a modern, dark-themed single-page application built with pure HTML, CSS, and JavaScript.
       </p>
 
       <div class="card-grid">
         <div class="doc-card">
           <div class="doc-card-icon">⚡</div>
           <div class="doc-card-title">No Build Step</div>
-          <p class="doc-card-desc">Plain HTML/CSS/JS — open directly in any browser, no tools required.</p>
+          <p class="doc-card-desc">Plain HTML/CSS/JS: open directly in any browser, no tools required.</p>
         </div>
         <div class="doc-card">
           <div class="doc-card-icon">📱</div>
@@ -428,7 +428,7 @@ personal-website/
 
       <div class="callout callout-info">
         <span class="callout-icon">ℹ️</span>
-        <span>All styles and scripts are embedded inline inside <code>index.html</code> — no external CSS or JS files are needed. This keeps deployment simple and eliminates loading dependencies.</span>
+        <span>All styles and scripts are embedded inline inside <code>index.html</code>. No external CSS or JS files are needed. This keeps deployment simple and eliminates loading dependencies.</span>
       </div>
     </div>
 
@@ -436,14 +436,14 @@ personal-website/
     <div class="doc-section" id="hero">
       <h1>Hero Section</h1>
       <div class="divider"></div>
-      <p class="doc-lead">The full-viewport landing section with a two-column layout — text on the left, portrait on the right.</p>
+      <p class="doc-lead">The full-viewport landing section with a two-column layout with text on the left, portrait on the right.</p>
 
       <h2>Structure</h2>
       <table class="doc-table">
         <thead><tr><th>Element</th><th>Description</th></tr></thead>
         <tbody>
           <tr><td>Availability badge</td><td>Green pulsing dot + "Available for Freelance Work" text</td></tr>
-          <tr><td>Headline</td><td>"Hi, I'm <strong>Geneva</strong> Designer &amp; VA" — name highlighted in purple gradient</td></tr>
+          <tr><td>Headline</td><td>"Hi, I'm <strong>Geneva</strong> Designer &amp; VA" with name highlighted in purple gradient</td></tr>
           <tr><td>Subtext</td><td>One-line value proposition for potential clients</td></tr>
           <tr><td>CTA Buttons</td><td>"View My Services" (purple fill) + "Work With Me" (outline)</td></tr>
           <tr><td>Social Pills</td><td>LinkedIn, YouTube, Upwork with SVG icons</td></tr>
@@ -481,7 +481,7 @@ personal-website/
       </table>
 
       <h3>Card Hover Effect</h3>
-      <p>On hover, each card lifts <code>translateY(-6px)</code>, the border becomes subtly purple, a top-edge neon line fades in, and an inner radial glow appears — all using CSS transitions.</p>
+      <p>On hover, each card lifts <code>translateY(-6px)</code>, the border becomes subtly purple, a top-edge neon line fades in, and an inner radial glow appears, all using CSS transitions.</p>
 
       <h3>Grid Breakpoints</h3>
       <table class="doc-table">
@@ -606,7 +606,7 @@ personal-website/
         <div class="color-swatch"><div class="swatch-box" style="background:rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.15);"></div><div class="swatch-label">--glass<br/>rgba white 4%</div></div>
       </div>
 
-      <h2>Accent — Purple</h2>
+      <h2>Accent: Purple</h2>
       <div class="color-row">
         <div class="color-swatch"><div class="swatch-box" style="background:#6d28d9;"></div><div class="swatch-label">--purple-1<br/>#6d28d9</div></div>
         <div class="color-swatch"><div class="swatch-box" style="background:#8b5cf6;"></div><div class="swatch-label">--purple-2<br/>#8b5cf6</div></div>
@@ -741,9 +741,9 @@ personal-website/
         <thead><tr><th>Detail</th><th>Value</th></tr></thead>
         <tbody>
           <tr><td>Repository</td><td>github.com/ghub-geneva/personal_website</td></tr>
-          <tr><td>Default branch</td><td><code>main</code> (base — README only)</td></tr>
+          <tr><td>Default branch</td><td><code>main</code> (base, README only)</td></tr>
           <tr><td>Feature branch</td><td><code>portfolio-revamp</code> (full site)</td></tr>
-          <tr><td>Open PR</td><td>PR #1 — "Add modern dark-themed portfolio site"</td></tr>
+          <tr><td>Open PR</td><td>PR #1: "Add modern dark-themed portfolio site"</td></tr>
           <tr><td>Remote protocol</td><td>HTTPS</td></tr>
         </tbody>
       </table>
@@ -777,7 +777,7 @@ personal-website/
       <h2>Changing Colors</h2>
       <p>Edit the <code>:root</code> CSS variables at the top of the <code>&lt;style&gt;</code> block:</p>
       <div class="code-block">
-        <div class="code-label">CSS — :root variables</div>
+        <div class="code-label">CSS :root variables</div>
         <pre>
 <span class="token-purple">:root</span> {
   <span class="token-blue">--purple-1</span>: <span class="token-orange">#6d28d9</span>;   <span class="token-gray">/* darkest purple */</span>
@@ -804,7 +804,7 @@ personal-website/
       <p>Duplicate an existing <code>.service-card</code> div inside <code>#services</code> and update the icon, title, description, and tags. The CSS grid will automatically reflow.</p>
 
       <h2>Updating Skill Percentages</h2>
-      <p>Each skill bar has a <code>data-width</code> attribute — change the number to update both the bar and the displayed percentage:</p>
+      <p>Each skill bar has a <code>data-width</code> attribute: change the number to update both the bar and the displayed percentage:</p>
       <div class="code-block">
         <div class="code-label">HTML</div>
         <pre>
