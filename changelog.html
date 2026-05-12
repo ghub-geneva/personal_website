@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog — Geneva Daugdaug Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #04050d;
+      --surface:    #0a0d1a;
+      --card:       rgba(255,255,255,0.04);
+      --border:     rgba(255,255,255,0.08);
+      --purple-1:   #6d28d9;
+      --purple-2:   #8b5cf6;
+      --purple-3:   #a78bfa;
+      --purple-4:   #c4b5fd;
+      --text:       #f1f5f9;
+      --muted:      #94a3b8;
+      --dim:        #475569;
+      --green:      #22c55e;
+      --blue:       #60a5fa;
+      --orange:     #fb923c;
+      --red:        #f87171;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 6%;
+      background: rgba(4,5,13,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--purple-3), var(--purple-4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--purple-3); }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 8rem 6% 4rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--purple-3);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .page-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .page-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      line-height: 1.75;
+    }
+    .divider {
+      width: 44px; height: 3px;
+      background: linear-gradient(90deg, var(--purple-2), var(--purple-4));
+      border-radius: 2px;
+      margin: 1rem 0 1.5rem;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .changelog-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 6% 8rem;
+    }
+
+    /* ── VERSION BLOCK ── */
+    .version-block {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 4rem;
+    }
+    .version-block::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px; bottom: -4rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--purple-2), rgba(139,92,246,0.15));
+    }
+    .version-block:last-child::before { display: none; }
+
+    .version-dot {
+      position: absolute;
+      left: -7px; top: 6px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-1), var(--purple-2));
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.2), 0 0 14px rgba(139,92,246,0.3);
+    }
+    .version-dot.latest {
+      background: linear-gradient(135deg, var(--purple-2), var(--purple-4));
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.3), 0 0 20px rgba(139,92,246,0.5);
+      animation: dot-pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes dot-pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(139,92,246,0.3), 0 0 20px rgba(139,92,246,0.5); }
+      50%       { box-shadow: 0 0 0 5px rgba(139,92,246,0.2), 0 0 30px rgba(139,92,246,0.6); }
+    }
+
+    .version-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .version-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--purple-3);
+    }
+    .version-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .version-date {
+      font-size: 0.78rem;
+      color: var(--dim);
+      font-weight: 500;
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .version-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .badge-latest  { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.35); color: var(--purple-3); }
+    .badge-feature { background: rgba(96,165,250,0.1);  border: 1px solid rgba(96,165,250,0.3);  color: var(--blue); }
+    .badge-fix     { background: rgba(34,197,94,0.1);   border: 1px solid rgba(34,197,94,0.3);   color: #4ade80; }
+    .badge-init    { background: rgba(251,146,60,0.1);  border: 1px solid rgba(251,146,60,0.3);  color: var(--orange); }
+
+    /* ── CHANGE CARD ── */
+    .change-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .change-card:hover { border-color: rgba(139,92,246,0.25); }
+
+    .change-category {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .change-category-icon { font-size: 1rem; }
+    .change-category-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .change-list { list-style: none; padding: 0; }
+    .change-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      padding: 0.4rem 0;
+      font-size: 0.875rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .change-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .change-pill {
+      flex-shrink: 0;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+    .pill-new    { background: rgba(139,92,246,0.15); color: var(--purple-3); }
+    .pill-added  { background: rgba(96,165,250,0.12); color: var(--blue); }
+    .pill-fix    { background: rgba(34,197,94,0.12);  color: #4ade80; }
+    .pill-deploy { background: rgba(251,146,60,0.12); color: var(--orange); }
+    .pill-init   { background: rgba(248,113,113,0.1); color: var(--red); }
+
+    .change-text { flex: 1; line-height: 1.6; }
+    .change-text strong { color: var(--text); font-weight: 600; }
+
+    /* ── STATS ROW ── */
+    .stats-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .stat-pill span { color: var(--purple-3); font-weight: 700; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { color: var(--dim); font-size: 0.8rem; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--purple-3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .page-hero, .changelog-wrap { padding-left: 5%; padding-right: 5%; }
+      .version-date { margin-left: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Geneva Daugdaug</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="documentation.html">Docs</a></li>
+      <li><a href="changelog.html" class="active">Changelog</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <span class="eyebrow">Release History</span>
+    <h1 class="page-title">Changelog</h1>
+    <div class="divider"></div>
+    <p class="page-desc">A full history of updates, improvements, and deployments made to the Geneva Daugdaug portfolio website.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="changelog-wrap">
+    <div class="stats-bar">
+      <div class="stat-pill">🗂 <span>3</span> Versions</div>
+      <div class="stat-pill">✨ <span>6</span> New Features</div>
+      <div class="stat-pill">📄 <span>3</span> Pages</div>
+      <div class="stat-pill">🚀 <span>3</span> Deployments</div>
+    </div>
+
+    <!-- ── v1.2.0 ── -->
+    <div class="version-block">
+      <div class="version-dot latest"></div>
+      <div class="version-header">
+        <span class="version-num">v1.2.0</span>
+        <span class="version-name">Navigation & Docs Update</span>
+        <span class="version-badge badge-latest">Latest</span>
+        <span class="version-date">May 12, 2025</span>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">🧭</span>
+          <span class="change-category-label">Navigation</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-added">Added</span>
+            <span class="change-text"><strong>Home link</strong> added to the navbar — scrolls back to the hero section</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">📄</span>
+          <span class="change-category-label">New Pages</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>documentation.html</strong> — full site reference covering sections, design system, color palette, typography, animations, deployment, and customization guide</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>changelog.html</strong> — this page; tracks all versions and changes to the site</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">🚀</span>
+          <span class="change-category-label">Deployment</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-deploy">Deploy</span>
+            <span class="change-text">Pushed to <strong>GitHub</strong> — branch <code style="font-family:monospace;font-size:0.8em;background:rgba(139,92,246,0.1);padding:0.1rem 0.4rem;border-radius:4px;color:var(--purple-3)">portfolio-revamp</code></span>
+          </li>
+          <li>
+            <span class="change-pill pill-deploy">Deploy</span>
+            <span class="change-text">Promoted to <strong>Vercel production</strong> — live at genevadaugdaug.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── v1.1.0 ── -->
+    <div class="version-block">
+      <div class="version-dot"></div>
+      <div class="version-header">
+        <span class="version-num">v1.1.0</span>
+        <span class="version-name">Initial Deployment</span>
+        <span class="version-badge badge-feature">Feature</span>
+        <span class="version-date">May 12, 2025</span>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">☁️</span>
+          <span class="change-category-label">Infrastructure</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-deploy">Deploy</span>
+            <span class="change-text">Configured and deployed to <strong>Vercel</strong> — production URL aliased to genevadaugdaug.com</span>
+          </li>
+          <li>
+            <span class="change-pill pill-added">Added</span>
+            <span class="change-text">GitHub repository created at <strong>ghub-geneva/personal_website</strong> with main + portfolio-revamp branches</span>
+          </li>
+          <li>
+            <span class="change-pill pill-added">Added</span>
+            <span class="change-text"><strong>.gitignore</strong> auto-generated by Vercel CLI during first deployment</span>
+          </li>
+          <li>
+            <span class="change-pill pill-added">Added</span>
+            <span class="change-text">Pull Request <strong>#1</strong> opened — "Add modern dark-themed portfolio site"</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── v1.0.0 ── -->
+    <div class="version-block">
+      <div class="version-dot"></div>
+      <div class="version-header">
+        <span class="version-num">v1.0.0</span>
+        <span class="version-name">Complete Site Revamp</span>
+        <span class="version-badge badge-init">Initial</span>
+        <span class="version-date">May 12, 2025</span>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">🎨</span>
+          <span class="change-category-label">Design & UI</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text">Full site rebuilt from scratch — <strong>dark luxury theme</strong> with black + deep navy background, purple neon gradients, and glassmorphism</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>Hero section</strong> — two-column layout with glowing circular portrait, spinning gradient ring, floating particles, glassmorphism stat chips, and mouse-parallax background orbs</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>Services section</strong> — 6 glassmorphism cards with hover animations, icons, descriptions, and rounded tags</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>Experience section</strong> — vertical glowing timeline + 2×2 stats grid (5+ Years, 50+ Projects, 100% Satisfaction, 24/7 Support)</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>Skills section</strong> — large glass panel with 6 scroll-triggered animated progress bars (Canva 98%, WordPress 95%, Photoshop 92%, VA 90%, DNS 88%, PM 85%)</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>Footer</strong> — branding + LinkedIn, YouTube, Upwork social links</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">⚙️</span>
+          <span class="change-category-label">Technical</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-init">Init</span>
+            <span class="change-text">Single-file architecture — all HTML, CSS, and JS embedded in <strong>index.html</strong> with no build step required</span>
+          </li>
+          <li>
+            <span class="change-pill pill-added">Added</span>
+            <span class="change-text"><strong>IntersectionObserver</strong> scroll-triggered reveal animations with stagger delays</span>
+          </li>
+          <li>
+            <span class="change-pill pill-added">Added</span>
+            <span class="change-text"><strong>Mouse parallax</strong> effect on hero background orbs via mousemove event listener</span>
+          </li>
+          <li>
+            <span class="change-pill pill-added">Added</span>
+            <span class="change-text">Fully <strong>responsive layout</strong> — adapts from 6-column desktop grid down to single-column mobile</span>
+          </li>
+          <li>
+            <span class="change-pill pill-added">Added</span>
+            <span class="change-text">Google Fonts — <strong>Plus Jakarta Sans</strong> (headings) + <strong>Inter</strong> (body text)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-copy">© 2025 Geneva Daugdaug. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="documentation.html">Docs</a>
+      <a href="https://github.com/ghub-geneva/personal_website" target="_blank">GitHub</a>
+      <a href="https://www.genevadaugdaug.com" target="_blank">Live Site</a>
+    </div>
+  </footer>
+
+</body>
+</html>
