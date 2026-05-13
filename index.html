@@ -663,6 +663,19 @@
       background: linear-gradient(to bottom, rgba(7,11,24,0.5), var(--bg-deep));
     }
 
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 25fr 75fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .skills-header { padding-top: 0.25rem; }
+    .skills-header .section-eyebrow { display: block; margin-bottom: 0.5rem; }
+    .skills-header .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+    .skills-header .section-line { margin: 0.8rem 0 1rem; }
+    .skills-header .section-desc { font-size: 0.875rem; max-width: 100%; margin-bottom: 0; }
+
     .skills-panel {
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--glass-border);
@@ -672,7 +685,6 @@
       -webkit-backdrop-filter: blur(16px);
       position: relative;
       overflow: hidden;
-      max-width: 860px;
     }
     .skills-panel::before {
       content: '';
@@ -804,6 +816,7 @@
       .exp-header .section-title { font-size: 1.8rem; }
       .skill-row { grid-template-columns: 1fr; }
       .skills-panel { padding: 2rem 1.75rem; }
+      .skills-layout { grid-template-columns: 1fr; gap: 2rem; }
     }
     @media (max-width: 640px) {
       .nav-links { display: none; }
@@ -1080,12 +1093,18 @@
 
   <!-- ── SKILLS ── -->
   <section id="skills">
-    <p class="section-eyebrow">Proficiency</p>
-    <h2 class="section-title">Skills &amp; Tools</h2>
-    <div class="section-line"></div>
-    <p class="section-desc">Core competencies sharpened across hundreds of real-world projects.</p>
+    <div class="skills-layout">
 
-    <div class="skills-panel reveal">
+      <!-- Left: Header -->
+      <div class="skills-header reveal">
+        <p class="section-eyebrow">Proficiency</p>
+        <h2 class="section-title">Skills &amp; Tools</h2>
+        <div class="section-line"></div>
+        <p class="section-desc">A snapshot of my core competencies, built through years of real-world projects.</p>
+      </div>
+
+      <!-- Right: Panel -->
+      <div class="skills-panel reveal">
       <div class="skills-panel-glow"></div>
 
       <div class="skill-row">
@@ -1140,13 +1159,15 @@
 
       </div>
     </div>
+
+    </div><!-- end skills-layout -->
   </section>
 
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-left">
       <div class="nav-logo">Geneva Daugdaug</div>
-      <p class="footer-copy">© 2025 Geneva Daugdaug. All rights reserved.</p>
+      <p class="footer-copy">© 2026 Geneva Daugdaug. All rights reserved.</p>
     </div>
     <div class="footer-right">
       <a href="https://www.linkedin.com/in/geneva-daugdaug-bb7b15140/" target="_blank" class="footer-link">LinkedIn</a>
