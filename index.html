@@ -537,10 +537,16 @@
 
     .exp-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      grid-template-columns: 20fr 40fr 40fr;
+      gap: 2.5rem;
       align-items: start;
     }
+
+    .exp-header { padding-top: 0.25rem; }
+    .exp-header .section-eyebrow { display: block; margin-bottom: 0.5rem; }
+    .exp-header .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+    .exp-header .section-line { margin: 0.8rem 0 1rem; }
+    .exp-header .section-desc { font-size: 0.875rem; max-width: 100%; margin-bottom: 0; }
 
     /* Timeline */
     .timeline { position: relative; }
@@ -794,7 +800,8 @@
       .portrait-scene { width: 280px; height: 280px; }
       .chip-1 { display: none; }
       .chip-2 { display: none; }
-      .exp-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .exp-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .exp-header .section-title { font-size: 1.8rem; }
       .skill-row { grid-template-columns: 1fr; }
       .skills-panel { padding: 2rem 1.75rem; }
     }
@@ -985,13 +992,17 @@
 
   <!-- ── EXPERIENCE ── -->
   <section id="experience">
-    <p class="section-eyebrow">My Journey</p>
-    <h2 class="section-title">Professional Experience</h2>
-    <div class="section-line"></div>
-    <p class="section-desc">Years of hands-on work across design, development, and digital operations.</p>
-
     <div class="exp-layout">
-      <!-- Timeline -->
+
+      <!-- Left: Header -->
+      <div class="exp-header reveal">
+        <p class="section-eyebrow">My Journey</p>
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="section-line"></div>
+        <p class="section-desc">Years of hands-on work across design, development, and digital operations.</p>
+      </div>
+
+      <!-- Center: Timeline -->
       <div class="timeline">
 
         <div class="tl-item reveal">
