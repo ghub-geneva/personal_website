@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog - Geneva Daugdaug Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -31,7 +28,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -52,7 +49,7 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       font-size: 1rem;
       font-weight: 800;
       background: linear-gradient(135deg, var(--purple-3), var(--purple-4));
@@ -86,7 +83,7 @@
       display: block;
     }
     .page-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
       letter-spacing: -1.2px;
@@ -155,13 +152,13 @@
       flex-wrap: wrap;
     }
     .version-num {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Courier New', Courier, monospace;
       font-size: 1rem;
       font-weight: 500;
       color: var(--purple-3);
     }
     .version-name {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: -0.3px;
@@ -171,7 +168,7 @@
       color: var(--dim);
       font-weight: 500;
       margin-left: auto;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Courier New', Courier, monospace;
     }
     .version-badge {
       font-size: 0.68rem;
@@ -308,19 +305,76 @@
   <!-- STATS -->
   <div class="changelog-wrap">
     <div class="stats-bar">
-      <div class="stat-pill">🗂 <span>6</span> Versions</div>
-      <div class="stat-pill">✨ <span>10</span> New Features</div>
+      <div class="stat-pill">🗂 <span>7</span> Versions</div>
+      <div class="stat-pill">✨ <span>15</span> New Features</div>
       <div class="stat-pill">📄 <span>4</span> Pages</div>
-      <div class="stat-pill">🚀 <span>7</span> Deployments</div>
+      <div class="stat-pill">🚀 <span>8</span> Deployments</div>
+    </div>
+
+    <!-- ── v1.6.0 ── -->
+    <div class="version-block">
+      <div class="version-dot latest"></div>
+      <div class="version-header">
+        <span class="version-num">v1.6.0</span>
+        <span class="version-name">Performance & Font Optimization</span>
+        <span class="version-badge badge-latest">Latest</span>
+        <span class="version-date">May 17, 2026</span>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">⚙️</span>
+          <span class="change-category-label">Technical</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>style.css</strong>: extracted all CSS out of index.html into a separate stylesheet for cleaner architecture</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>favicon.svg</strong>: added custom GD favicon with purple gradient and rounded square shape</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>WebP image</strong>: converted portrait to <code style="font-family:monospace;font-size:0.8em;background:rgba(139,92,246,0.1);padding:0.1rem 0.4rem;border-radius:4px;color:var(--purple-3)">imgs/gnv-nobg.webp</code> — 89% smaller (301 KB → 34 KB) with PNG fallback via <code style="font-family:monospace;font-size:0.8em;background:rgba(139,92,246,0.1);padding:0.1rem 0.4rem;border-radius:4px;color:var(--purple-3)">&lt;picture&gt;</code></span>
+          </li>
+          <li>
+            <span class="change-pill pill-fix">Fix</span>
+            <span class="change-text"><strong>Google Fonts removed</strong>: replaced Plus Jakarta Sans, Inter, and JetBrains Mono with system font stack across all 4 pages — faster load, no external requests</span>
+          </li>
+          <li>
+            <span class="change-pill pill-new">New</span>
+            <span class="change-text"><strong>vercel.json</strong>: added cache headers — images cached 1 year (immutable), CSS 1 day + stale-while-revalidate, HTML always revalidated</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">🚀</span>
+          <span class="change-category-label">Deployment</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-deploy">Deploy</span>
+            <span class="change-text">Pushed to <strong>GitHub</strong>: branch <code style="font-family:monospace;font-size:0.8em;background:rgba(139,92,246,0.1);padding:0.1rem 0.4rem;border-radius:4px;color:var(--purple-3)">portfolio-revamp</code></span>
+          </li>
+          <li>
+            <span class="change-pill pill-deploy">Deploy</span>
+            <span class="change-text">Promoted to <strong>Vercel production</strong>, live at genevadaugdaug.com</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- ── v1.5.0 ── -->
     <div class="version-block">
-      <div class="version-dot latest"></div>
+      <div class="version-dot"></div>
       <div class="version-header">
         <span class="version-num">v1.5.0</span>
         <span class="version-name">Portrait Photo Update</span>
-        <span class="version-badge badge-latest">Latest</span>
+        <span class="version-badge badge-feature">Feature</span>
         <span class="version-date">May 13, 2026</span>
       </div>
 

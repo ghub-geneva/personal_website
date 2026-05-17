@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Panel - Geneva Daugdaug Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -35,7 +32,7 @@
 
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -117,7 +114,7 @@
     }
     .brand-text { line-height: 1.2; }
     .brand-name {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       font-size: 0.88rem;
       font-weight: 800;
       background: linear-gradient(135deg, var(--purple-3), var(--purple-4));
@@ -204,7 +201,7 @@
       margin-bottom: 2rem;
     }
     .dash-welcome h1 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: -0.5px;
@@ -228,7 +225,7 @@
     .stat-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
     .stat-label { font-size: 0.75rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
     .stat-value {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       font-size: 1.75rem;
       font-weight: 800;
       letter-spacing: -1px;
@@ -291,7 +288,7 @@
     .dot-orange { background: var(--orange); }
     .recent-text { color: var(--muted); flex: 1; line-height: 1.5; }
     .recent-text strong { color: var(--text); }
-    .recent-date { color: var(--dim); font-size: 0.72rem; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
+    .recent-date { color: var(--dim); font-size: 0.72rem; flex-shrink: 0; font-family: 'Courier New', Courier, monospace; }
 
     /* ── SECTION HEADER ── */
     .section-header {
@@ -311,7 +308,7 @@
       margin-bottom: 0.4rem;
     }
     .section-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       font-size: 1.6rem;
       font-weight: 800;
       letter-spacing: -0.6px;
@@ -351,9 +348,9 @@
       display: flex; align-items: center; gap: 0.75rem;
       margin-bottom: 1rem; flex-wrap: wrap;
     }
-    .tl-version { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 500; color: var(--purple-3); }
+    .tl-version { font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; font-weight: 500; color: var(--purple-3); }
     .tl-vname { font-weight: 700; font-size: 1rem; }
-    .tl-date { font-size: 0.72rem; color: var(--dim); font-family: 'JetBrains Mono', monospace; margin-left: auto; }
+    .tl-date { font-size: 0.72rem; color: var(--dim); font-family: 'Courier New', Courier, monospace; margin-left: auto; }
     .v-badge {
       font-size: 0.62rem; font-weight: 700; padding: 0.18rem 0.55rem;
       border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
@@ -422,7 +419,7 @@
     .toc-item.sub:hover { color: var(--muted); }
 
     .docs-content h2 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: -0.3px;
@@ -453,7 +450,7 @@
     }
     .doc-table tr:hover td { background: rgba(255,255,255,0.02); }
     code {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Courier New', Courier, monospace;
       background: rgba(139,92,246,0.1);
       color: var(--purple-3);
       padding: 0.12rem 0.4rem;
@@ -470,7 +467,7 @@
       overflow-x: auto;
     }
     .code-block pre {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Courier New', Courier, monospace;
       font-size: 0.8rem;
       line-height: 1.7;
       color: #e2e8f0;
@@ -494,7 +491,7 @@
     .color-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1rem 0; }
     .color-swatch { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
     .swatch-box { width: 52px; height: 52px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
-    .swatch-label { font-size: 0.62rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; text-align: center; line-height: 1.4; }
+    .swatch-label { font-size: 0.62rem; color: var(--muted); font-family: 'Courier New', Courier, monospace; text-align: center; line-height: 1.4; }
 
     .skill-mini { margin-bottom: 0.85rem; }
     .skill-mini-head { display: flex; justify-content: space-between; margin-bottom: 0.35rem; font-size: 0.8rem; font-weight: 600; }
@@ -603,7 +600,7 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 0.65rem 1rem;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Courier New', Courier, monospace;
       font-size: 0.8rem;
       color: #e2e8f0;
       margin-top: 0.75rem;
@@ -680,7 +677,7 @@
         </button>
         <button class="nav-item" onclick="showPanel('changelog', this)">
           <span class="nav-item-icon">📋</span> Changelog
-          <span class="nav-badge">v1.5</span>
+          <span class="nav-badge">v1.6</span>
         </button>
         <button class="nav-item" onclick="showPanel('docs', this)">
           <span class="nav-item-icon">📖</span> Documentation
@@ -749,7 +746,7 @@
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-label">Current Version</div>
-          <div class="stat-value">1.5.0</div>
+          <div class="stat-value">1.6.0</div>
           <div class="stat-sub">Latest release</div>
         </div>
         <div class="stat-card">
@@ -759,7 +756,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-label">Deployments</div>
-          <div class="stat-value">7</div>
+          <div class="stat-value">8</div>
           <div class="stat-sub">Vercel production</div>
         </div>
         <div class="stat-card">
@@ -798,28 +795,28 @@
           <div class="dash-card-title">🕒 Recent Activity</div>
           <div class="recent-item">
             <div class="recent-dot dot-purple"></div>
-            <div class="recent-text"><strong>admin.html</strong> created: Admin panel page</div>
-            <div class="recent-date">Today</div>
+            <div class="recent-text"><strong>Google Fonts removed</strong>: switched to system font stack on all 4 pages</div>
+            <div class="recent-date">May 17</div>
+          </div>
+          <div class="recent-item">
+            <div class="recent-dot dot-purple"></div>
+            <div class="recent-text"><strong>vercel.json</strong> added: cache headers for images, CSS, and HTML</div>
+            <div class="recent-date">May 17</div>
           </div>
           <div class="recent-item">
             <div class="recent-dot dot-blue"></div>
-            <div class="recent-text"><strong>Home link</strong> added to navbar in index.html</div>
-            <div class="recent-date">Today</div>
+            <div class="recent-text"><strong>WebP portrait</strong>: gnv-nobg.webp — 89% smaller with PNG fallback</div>
+            <div class="recent-date">May 17</div>
           </div>
           <div class="recent-item">
             <div class="recent-dot dot-green"></div>
-            <div class="recent-text"><strong>changelog.html</strong> created: Release history page</div>
-            <div class="recent-date">Today</div>
-          </div>
-          <div class="recent-item">
-            <div class="recent-dot dot-green"></div>
-            <div class="recent-text"><strong>documentation.html</strong> created: Full site reference</div>
-            <div class="recent-date">Today</div>
+            <div class="recent-text"><strong>favicon.svg</strong> added: custom GD purple gradient icon</div>
+            <div class="recent-date">May 17</div>
           </div>
           <div class="recent-item">
             <div class="recent-dot dot-orange"></div>
-            <div class="recent-text"><strong>Deployed to Vercel</strong>, genevadaugdaug.com live</div>
-            <div class="recent-date">Today</div>
+            <div class="recent-text"><strong>style.css</strong> created: all CSS extracted from index.html</div>
+            <div class="recent-date">May 17</div>
           </div>
         </div>
       </div>
@@ -988,13 +985,60 @@
 
       <div class="timeline-wrap">
 
-        <!-- v1.5.0 -->
+        <!-- v1.6.0 -->
         <div class="tl-block">
           <div class="tl-dot latest"></div>
           <div class="tl-header">
+            <span class="tl-version">v1.6.0</span>
+            <span class="tl-vname">Performance & Font Optimization</span>
+            <span class="v-badge v-latest">Latest</span>
+            <span class="tl-date">May 17, 2026</span>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">⚙️ Technical</div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>style.css</strong>: extracted all CSS from index.html into a separate stylesheet</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>favicon.svg</strong>: custom GD favicon with purple gradient</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>WebP portrait</strong>: 89% smaller (301 KB → 34 KB) with PNG fallback</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-fix">Fix</span>
+              <span class="change-row-text"><strong>Google Fonts removed</strong>: replaced with system font stack across all 4 pages</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>vercel.json</strong>: cache headers — images 1yr immutable, CSS 1 day, HTML no-cache</span>
+            </div>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">🚀 Deployment</div>
+            <div class="change-row">
+              <span class="cpill cp-deploy">Deploy</span>
+              <span class="change-row-text">Pushed to <strong>GitHub</strong>: branch <code>portfolio-revamp</code></span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-deploy">Deploy</span>
+              <span class="change-row-text">Promoted to <strong>Vercel production</strong>, live at genevadaugdaug.com</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- v1.5.0 -->
+        <div class="tl-block">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
             <span class="tl-version">v1.5.0</span>
             <span class="tl-vname">Portrait Photo Update</span>
-            <span class="v-badge v-latest">Latest</span>
+            <span class="v-badge v-feature">Feature</span>
             <span class="tl-date">May 13, 2026</span>
           </div>
 

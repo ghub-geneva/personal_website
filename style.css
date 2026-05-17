@@ -28,7 +28,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   background: var(--bg-deep);
   color: var(--text);
   overflow-x: hidden;
@@ -68,7 +68,7 @@ nav {
 }
 
 .nav-logo {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: 1.15rem;
   font-weight: 800;
   background: linear-gradient(135deg, var(--purple-3), var(--purple-4));
@@ -186,7 +186,7 @@ nav {
 
 /* Headline */
 .hero-headline {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: clamp(2.6rem, 5.5vw, 4.2rem);
   font-weight: 900;
   line-height: 1.05;
@@ -415,7 +415,7 @@ section:nth-child(even) { background: linear-gradient(to bottom, rgba(7,11,24,0.
   margin-bottom: 0.6rem;
 }
 .section-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: clamp(1.9rem, 4vw, 2.8rem);
   font-weight: 900;
   letter-spacing: -1.2px;
@@ -631,7 +631,7 @@ section:nth-child(even) { background: linear-gradient(to bottom, rgba(7,11,24,0.
 }
 .stat-emoji { font-size: 1.75rem; margin-bottom: 0.75rem; }
 .stat-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: 2rem;
   font-weight: 900;
   background: linear-gradient(135deg, var(--purple-2), var(--purple-4));
