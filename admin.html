@@ -635,6 +635,116 @@
     .wf-rule-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.3rem; }
     .wf-rule-desc { color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
 
+    /* ── PASSWORD GATE ── */
+    #pw-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #pw-gate.hidden { display: none; }
+
+    .pw-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2.75rem;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(139,92,246,0.12);
+    }
+    .pw-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--purple-1), var(--purple-2));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 0 24px rgba(139,92,246,0.35);
+    }
+    .pw-title {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin-bottom: 0.3rem;
+    }
+    .pw-sub {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 1.75rem;
+    }
+    .pw-input-wrap {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .pw-input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 2.75rem 0.75rem 1rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .pw-input:focus {
+      border-color: var(--purple-2);
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+    }
+    .pw-input.error {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(248,113,113,0.12);
+      animation: shake 0.35s ease;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-6px); }
+      60%       { transform: translateX(6px); }
+    }
+    .pw-toggle {
+      position: absolute;
+      right: 0.75rem; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      color: var(--dim); cursor: pointer;
+      font-size: 1rem; padding: 0.2rem;
+      transition: color 0.2s;
+    }
+    .pw-toggle:hover { color: var(--muted); }
+    .pw-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--purple-1), var(--purple-2));
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: inherit;
+      padding: 0.8rem;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: 0.2px;
+    }
+    .pw-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .pw-btn:active { transform: translateY(0); }
+    .pw-error {
+      color: var(--red);
+      font-size: 0.78rem;
+      margin-top: 0.6rem;
+      min-height: 1.1rem;
+      transition: opacity 0.2s;
+    }
+    .pw-error.hidden { opacity: 0; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -651,6 +761,21 @@
   </style>
 </head>
 <body>
+
+  <!-- ── PASSWORD GATE ── -->
+  <div id="pw-gate">
+    <div class="pw-box">
+      <div class="pw-icon">🔐</div>
+      <div class="pw-title">Admin Access</div>
+      <p class="pw-sub">Enter your password to continue</p>
+      <div class="pw-input-wrap">
+        <input id="pw-input" class="pw-input" type="password" placeholder="Password" autocomplete="current-password" />
+        <button class="pw-toggle" onclick="togglePwVisibility()" title="Show/hide password">👁</button>
+      </div>
+      <p id="pw-error" class="pw-error hidden">Incorrect password. Try again.</p>
+      <button class="pw-btn" onclick="checkPassword()">Unlock</button>
+    </div>
+  </div>
 
   <!-- ── SIDEBAR ── -->
   <aside class="sidebar">
@@ -677,7 +802,7 @@
         </button>
         <button class="nav-item" onclick="showPanel('changelog', this)">
           <span class="nav-item-icon">📋</span> Changelog
-          <span class="nav-badge">v1.6</span>
+          <span class="nav-badge">v1.7</span>
         </button>
         <button class="nav-item" onclick="showPanel('docs', this)">
           <span class="nav-item-icon">📖</span> Documentation
@@ -746,7 +871,7 @@
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-label">Current Version</div>
-          <div class="stat-value">1.6.0</div>
+          <div class="stat-value">1.7.0</div>
           <div class="stat-sub">Latest release</div>
         </div>
         <div class="stat-card">
@@ -756,7 +881,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-label">Deployments</div>
-          <div class="stat-value">8</div>
+          <div class="stat-value">9</div>
           <div class="stat-sub">Vercel production</div>
         </div>
         <div class="stat-card">
@@ -795,27 +920,27 @@
           <div class="dash-card-title">🕒 Recent Activity</div>
           <div class="recent-item">
             <div class="recent-dot dot-purple"></div>
+            <div class="recent-text"><strong>Password gate</strong> added to admin.html with session memory</div>
+            <div class="recent-date">Today</div>
+          </div>
+          <div class="recent-item">
+            <div class="recent-dot dot-purple"></div>
             <div class="recent-text"><strong>Google Fonts removed</strong>: switched to system font stack on all 4 pages</div>
             <div class="recent-date">May 17</div>
           </div>
           <div class="recent-item">
-            <div class="recent-dot dot-purple"></div>
+            <div class="recent-dot dot-blue"></div>
             <div class="recent-text"><strong>vercel.json</strong> added: cache headers for images, CSS, and HTML</div>
             <div class="recent-date">May 17</div>
           </div>
           <div class="recent-item">
-            <div class="recent-dot dot-blue"></div>
+            <div class="recent-dot dot-green"></div>
             <div class="recent-text"><strong>WebP portrait</strong>: gnv-nobg.webp — 89% smaller with PNG fallback</div>
             <div class="recent-date">May 17</div>
           </div>
           <div class="recent-item">
-            <div class="recent-dot dot-green"></div>
-            <div class="recent-text"><strong>favicon.svg</strong> added: custom GD purple gradient icon</div>
-            <div class="recent-date">May 17</div>
-          </div>
-          <div class="recent-item">
             <div class="recent-dot dot-orange"></div>
-            <div class="recent-text"><strong>style.css</strong> created: all CSS extracted from index.html</div>
+            <div class="recent-text"><strong>favicon.svg</strong> added: custom GD purple gradient icon</div>
             <div class="recent-date">May 17</div>
           </div>
         </div>
@@ -985,13 +1110,56 @@
 
       <div class="timeline-wrap">
 
-        <!-- v1.6.0 -->
+        <!-- v1.7.0 -->
         <div class="tl-block">
           <div class="tl-dot latest"></div>
           <div class="tl-header">
+            <span class="tl-version">v1.7.0</span>
+            <span class="tl-vname">Admin Password Gate</span>
+            <span class="v-badge v-latest">Latest</span>
+            <span class="tl-date">May 17, 2026</span>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">🔐 Security</div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>Password gate</strong>: admin.html protected by a full-screen lock screen</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>Show/hide toggle</strong>: reveal or mask password while typing</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>Shake + error feedback</strong>: wrong password triggers shake animation and error message</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-added">Added</span>
+              <span class="change-row-text"><strong>Session memory</strong>: stays unlocked for the full browser session</span>
+            </div>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">🚀 Deployment</div>
+            <div class="change-row">
+              <span class="cpill cp-deploy">Deploy</span>
+              <span class="change-row-text">Pushed to <strong>GitHub</strong>: branch <code>portfolio-revamp</code></span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-deploy">Deploy</span>
+              <span class="change-row-text">Promoted to <strong>Vercel production</strong>, live at genevadaugdaug.com</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- v1.6.0 -->
+        <div class="tl-block">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
             <span class="tl-version">v1.6.0</span>
             <span class="tl-vname">Performance & Font Optimization</span>
-            <span class="v-badge v-latest">Latest</span>
+            <span class="v-badge v-feature">Feature</span>
             <span class="tl-date">May 17, 2026</span>
           </div>
 
@@ -1475,6 +1643,40 @@
   </main>
 
   <script>
+    /* ── PASSWORD GATE ── */
+    const CORRECT_PW = 'Batinawong14';
+
+    function checkPassword() {
+      const input = document.getElementById('pw-input');
+      const err   = document.getElementById('pw-error');
+      if (input.value === CORRECT_PW) {
+        sessionStorage.setItem('admin_auth', '1');
+        document.getElementById('pw-gate').classList.add('hidden');
+        err.classList.add('hidden');
+      } else {
+        input.classList.add('error');
+        err.classList.remove('hidden');
+        setTimeout(() => input.classList.remove('error'), 400);
+        input.value = '';
+        input.focus();
+      }
+    }
+
+    function togglePwVisibility() {
+      const input = document.getElementById('pw-input');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    document.getElementById('pw-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    /* Auto-unlock if already authenticated this session */
+    if (sessionStorage.getItem('admin_auth') === '1') {
+      document.getElementById('pw-gate').classList.add('hidden');
+    }
+
+    /* ── PANELS ── */
     const panels = { dashboard: 'Dashboard', workflow: 'Workflow', changelog: 'Changelog', docs: 'Documentation' };
     const subs   = { dashboard: 'Overview',  workflow: 'Development Process', changelog: 'Release History', docs: 'Technical Reference' };
 
