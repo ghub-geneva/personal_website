@@ -802,7 +802,7 @@
         </button>
         <button class="nav-item" onclick="showPanel('changelog', this)">
           <span class="nav-item-icon">📋</span> Changelog
-          <span class="nav-badge">v1.7</span>
+          <span class="nav-badge">v1.8</span>
         </button>
         <button class="nav-item" onclick="showPanel('docs', this)">
           <span class="nav-item-icon">📖</span> Documentation
@@ -871,7 +871,7 @@
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-label">Current Version</div>
-          <div class="stat-value">1.7.0</div>
+          <div class="stat-value">1.8.0</div>
           <div class="stat-sub">Latest release</div>
         </div>
         <div class="stat-card">
@@ -881,7 +881,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-label">Deployments</div>
-          <div class="stat-value">9</div>
+          <div class="stat-value">10</div>
           <div class="stat-sub">Vercel production</div>
         </div>
         <div class="stat-card">
@@ -920,8 +920,13 @@
           <div class="dash-card-title">🕒 Recent Activity</div>
           <div class="recent-item">
             <div class="recent-dot dot-purple"></div>
-            <div class="recent-text"><strong>Password gate</strong> added to admin.html with session memory</div>
+            <div class="recent-text"><strong>Stack cleanup</strong>: removed node_modules, package files, fixed stale docs</div>
             <div class="recent-date">Today</div>
+          </div>
+          <div class="recent-item">
+            <div class="recent-dot dot-blue"></div>
+            <div class="recent-text"><strong>Password gate</strong> added to admin.html with session memory</div>
+            <div class="recent-date">May 17</div>
           </div>
           <div class="recent-item">
             <div class="recent-dot dot-purple"></div>
@@ -1110,13 +1115,56 @@
 
       <div class="timeline-wrap">
 
-        <!-- v1.7.0 -->
+        <!-- v1.8.0 -->
         <div class="tl-block">
           <div class="tl-dot latest"></div>
           <div class="tl-header">
+            <span class="tl-version">v1.8.0</span>
+            <span class="tl-vname">Stack Cleanup</span>
+            <span class="v-badge v-latest">Latest</span>
+            <span class="tl-date">May 19, 2026</span>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">🗑️ Cleanup</div>
+            <div class="change-row">
+              <span class="cpill cp-fix">Fix</span>
+              <span class="change-row-text"><strong>node_modules removed</strong>: 20 MB of sharp deleted — one-time WebP tool, not needed in the app</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-fix">Fix</span>
+              <span class="change-row-text"><strong>package.json + package-lock.json removed</strong>: no build step, no runtime deps</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-fix">Fix</span>
+              <span class="change-row-text"><strong>.gitignore updated</strong>: node_modules/ added to prevent accidental commits</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-fix">Fix</span>
+              <span class="change-row-text"><strong>Stale docs corrected</strong>: removed lingering Google Fonts / Plus Jakarta Sans references</span>
+            </div>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">🚀 Deployment</div>
+            <div class="change-row">
+              <span class="cpill cp-deploy">Deploy</span>
+              <span class="change-row-text">Pushed to <strong>GitHub</strong>: branch <code>portfolio-revamp</code></span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-deploy">Deploy</span>
+              <span class="change-row-text">Promoted to <strong>Vercel production</strong> — upload size 20 MB → 1.2 MB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- v1.7.0 -->
+        <div class="tl-block">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
             <span class="tl-version">v1.7.0</span>
             <span class="tl-vname">Admin Password Gate</span>
-            <span class="v-badge v-latest">Latest</span>
+            <span class="v-badge v-feature">Feature</span>
             <span class="tl-date">May 17, 2026</span>
           </div>
 

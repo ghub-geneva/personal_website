@@ -305,19 +305,72 @@
   <!-- STATS -->
   <div class="changelog-wrap">
     <div class="stats-bar">
-      <div class="stat-pill">🗂 <span>8</span> Versions</div>
-      <div class="stat-pill">✨ <span>16</span> New Features</div>
+      <div class="stat-pill">🗂 <span>9</span> Versions</div>
+      <div class="stat-pill">✨ <span>17</span> New Features</div>
       <div class="stat-pill">📄 <span>4</span> Pages</div>
-      <div class="stat-pill">🚀 <span>9</span> Deployments</div>
+      <div class="stat-pill">🚀 <span>10</span> Deployments</div>
+    </div>
+
+    <!-- ── v1.8.0 ── -->
+    <div class="version-block">
+      <div class="version-dot latest"></div>
+      <div class="version-header">
+        <span class="version-num">v1.8.0</span>
+        <span class="version-name">Stack Cleanup</span>
+        <span class="version-badge badge-latest">Latest</span>
+        <span class="version-date">May 19, 2026</span>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">🗑️</span>
+          <span class="change-category-label">Cleanup</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-fix">Fix</span>
+            <span class="change-text"><strong>node_modules removed</strong>: deleted 20 MB of <code style="font-family:monospace;font-size:0.8em;background:rgba(139,92,246,0.1);padding:0.1rem 0.4rem;border-radius:4px;color:var(--purple-3)">sharp</code> and dependencies — it was a one-time WebP conversion tool, not needed in the running app</span>
+          </li>
+          <li>
+            <span class="change-pill pill-fix">Fix</span>
+            <span class="change-text"><strong>package.json + package-lock.json removed</strong>: no build step, no runtime dependencies — nothing to declare</span>
+          </li>
+          <li>
+            <span class="change-pill pill-fix">Fix</span>
+            <span class="change-text"><strong>.gitignore updated</strong>: added <code style="font-family:monospace;font-size:0.8em;background:rgba(139,92,246,0.1);padding:0.1rem 0.4rem;border-radius:4px;color:var(--purple-3)">node_modules/</code> so it can never be accidentally committed</span>
+          </li>
+          <li>
+            <span class="change-pill pill-fix">Fix</span>
+            <span class="change-text"><strong>Stale docs corrected</strong>: documentation.html and admin.html still referenced "Plus Jakarta Sans / Google Fonts" — updated to reflect the system font stack</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="change-card">
+        <div class="change-category">
+          <span class="change-category-icon">🚀</span>
+          <span class="change-category-label">Deployment</span>
+        </div>
+        <ul class="change-list">
+          <li>
+            <span class="change-pill pill-deploy">Deploy</span>
+            <span class="change-text">Pushed to <strong>GitHub</strong>: branch <code style="font-family:monospace;font-size:0.8em;background:rgba(139,92,246,0.1);padding:0.1rem 0.4rem;border-radius:4px;color:var(--purple-3)">portfolio-revamp</code></span>
+          </li>
+          <li>
+            <span class="change-pill pill-deploy">Deploy</span>
+            <span class="change-text">Promoted to <strong>Vercel production</strong>, live at genevadaugdaug.com — upload size dropped from 20 MB to 1.2 MB</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!-- ── v1.7.0 ── -->
     <div class="version-block">
-      <div class="version-dot latest"></div>
+      <div class="version-dot"></div>
       <div class="version-header">
         <span class="version-num">v1.7.0</span>
         <span class="version-name">Admin Password Gate</span>
-        <span class="version-badge badge-latest">Latest</span>
+        <span class="version-badge badge-feature">Feature</span>
         <span class="version-date">May 17, 2026</span>
       </div>
 
