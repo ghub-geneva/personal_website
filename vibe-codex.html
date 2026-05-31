@@ -39,6 +39,15 @@
       overflow-x: hidden;
     }
 
+    /* ── CODE RAIN CANVAS ── */
+    #code-rain {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
     /* ── NOISE ── */
     body::before {
       content: '';
@@ -475,6 +484,9 @@
   </style>
 </head>
 <body>
+
+  <!-- CODE RAIN -->
+  <canvas id="code-rain"></canvas>
 
   <!-- NAV -->
   <nav>
@@ -982,6 +994,59 @@
     </div>
   </div>
 
+
+  <script>
+    /* ── CODE RAIN ── */
+    (function() {
+      const canvas = document.getElementById('code-rain');
+      const ctx    = canvas.getContext('2d');
+
+      const CHARS = '01{}[]()<>=/\\;:!?+-*&|^~`#$@コトニハロヘホマミムメモ'.split('');
+      const SNIPPETS = ['const','let','var','fn()','if','=>','null','true','//','{}','[]'];
+      const FONT_SIZE = 13;
+      let cols, drops;
+
+      const COLORS = ['#6d28d9','#8b5cf6','#a78bfa','#c4b5fd','#7c3aed'];
+
+      function resize() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+        cols  = Math.floor(canvas.width / FONT_SIZE);
+        drops = Array.from({ length: cols }, () => Math.random() * -80);
+      }
+
+      function draw() {
+        ctx.fillStyle = 'rgba(4, 5, 13, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = `${FONT_SIZE}px 'Courier New', monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+          const y = drops[i] * FONT_SIZE;
+          if (y < 0) { drops[i] += 0.5; continue; }
+
+          /* pick a random char or snippet */
+          const pool   = Math.random() < 0.06 ? SNIPPETS : CHARS;
+          const char   = pool[Math.floor(Math.random() * pool.length)];
+          const color  = COLORS[Math.floor(Math.random() * COLORS.length)];
+
+          /* lead char is brighter */
+          ctx.fillStyle = Math.random() < 0.1 ? '#e9d5ff' : color;
+          ctx.fillText(char, i * FONT_SIZE, y);
+
+          /* reset column randomly after it passes the bottom */
+          if (y > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i] += 0.4 + Math.random() * 0.3;
+        }
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      setInterval(draw, 45);
+    })();
+  </script>
 
   <script>
     function openModal(id) {
