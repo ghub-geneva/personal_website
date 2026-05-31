@@ -39,13 +39,40 @@
       overflow-x: hidden;
     }
 
-    /* ── CODE RAIN CANVAS ── */
-    #code-rain {
+    /* ── CODE LAB BACKGROUND ── */
+    .code-bg {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.45;
+      overflow: hidden;
+      background-image:
+        radial-gradient(circle, rgba(139,92,246,0.12) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    /* fade edges with radial overlay */
+    .code-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%,
+        transparent 40%,
+        rgba(4,5,13,0.7) 100%);
+    }
+    .code-glyph {
+      position: absolute;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 700;
+      color: var(--purple-2);
+      opacity: 0;
+      user-select: none;
+      animation: glyph-drift linear infinite;
+    }
+    @keyframes glyph-drift {
+      0%   { opacity: 0;    transform: translateY(0)   rotate(var(--r)); }
+      10%  { opacity: var(--o); }
+      85%  { opacity: var(--o); }
+      100% { opacity: 0;    transform: translateY(-120px) rotate(var(--r)); }
     }
 
     /* ── NOISE ── */
@@ -485,8 +512,8 @@
 </head>
 <body>
 
-  <!-- CODE RAIN -->
-  <canvas id="code-rain"></canvas>
+  <!-- CODE LAB BACKGROUND -->
+  <div class="code-bg" id="code-bg"></div>
 
   <!-- NAV -->
   <nav>
@@ -996,55 +1023,41 @@
 
 
   <script>
-    /* ── CODE RAIN ── */
+    /* ── CODE LAB GLYPHS ── */
     (function() {
-      const canvas = document.getElementById('code-rain');
-      const ctx    = canvas.getContext('2d');
+      const GLYPHS = [
+        '{ }', '[ ]', '( )', '/>', '<=', '=>', '//',
+        'const', 'let', 'fn()', 'if', 'return',
+        '0x1F', '&&', '||', '!=', '===', '++',
+        '<div>', '</>', '#', '@', '~'
+      ];
+      const container = document.getElementById('code-bg');
+      const COUNT = 22;
 
-      const CHARS = '01{}[]()<>=/\\;:!?+-*&|^~`#$@コトニハロヘホマミムメモ'.split('');
-      const SNIPPETS = ['const','let','var','fn()','if','=>','null','true','//','{}','[]'];
-      const FONT_SIZE = 13;
-      let cols, drops;
+      for (let i = 0; i < COUNT; i++) {
+        const el  = document.createElement('span');
+        el.className = 'code-glyph';
+        el.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
 
-      const COLORS = ['#6d28d9','#8b5cf6','#a78bfa','#c4b5fd','#7c3aed'];
+        const size    = 14 + Math.random() * 22;
+        const opacity = 0.055 + Math.random() * 0.07;
+        const dur     = 18 + Math.random() * 28;
+        const delay   = -(Math.random() * dur);
+        const rot     = (Math.random() - 0.5) * 20;
+        const left    = 2 + Math.random() * 96;
+        const top     = 5 + Math.random() * 90;
 
-      function resize() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-        cols  = Math.floor(canvas.width / FONT_SIZE);
-        drops = Array.from({ length: cols }, () => Math.random() * -80);
+        el.style.cssText = `
+          font-size: ${size}px;
+          left: ${left}%;
+          top: ${top}%;
+          --o: ${opacity};
+          --r: ${rot}deg;
+          animation-duration: ${dur}s;
+          animation-delay: ${delay}s;
+        `;
+        container.appendChild(el);
       }
-
-      function draw() {
-        ctx.fillStyle = 'rgba(4, 5, 13, 0.1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.font = `${FONT_SIZE}px 'Courier New', monospace`;
-
-        for (let i = 0; i < drops.length; i++) {
-          const y = drops[i] * FONT_SIZE;
-          if (y < 0) { drops[i] += 0.5; continue; }
-
-          /* pick a random char or snippet */
-          const pool   = Math.random() < 0.06 ? SNIPPETS : CHARS;
-          const char   = pool[Math.floor(Math.random() * pool.length)];
-          const color  = COLORS[Math.floor(Math.random() * COLORS.length)];
-
-          /* lead char is brighter */
-          ctx.fillStyle = Math.random() < 0.1 ? '#e9d5ff' : color;
-          ctx.fillText(char, i * FONT_SIZE, y);
-
-          /* reset column randomly after it passes the bottom */
-          if (y > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-          }
-          drops[i] += 0.4 + Math.random() * 0.3;
-        }
-      }
-
-      resize();
-      window.addEventListener('resize', resize);
-      setInterval(draw, 45);
     })();
   </script>
 
