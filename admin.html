@@ -802,7 +802,7 @@
         </button>
         <button class="nav-item" onclick="showPanel('changelog', this)">
           <span class="nav-item-icon">📋</span> Changelog
-          <span class="nav-badge">v1.8</span>
+          <span class="nav-badge">v1.9</span>
         </button>
         <button class="nav-item" onclick="showPanel('docs', this)">
           <span class="nav-item-icon">📖</span> Documentation
@@ -819,6 +819,9 @@
         </a>
         <a class="nav-item" href="changelog.html" target="_blank">
           <span class="nav-item-icon">🗂</span> Changelog Page
+        </a>
+        <a class="nav-item" href="vibe-codex.html" target="_blank">
+          <span class="nav-item-icon">⚡</span> Vibe Codex
         </a>
       </div>
 
@@ -871,17 +874,17 @@
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-label">Current Version</div>
-          <div class="stat-value">1.8.0</div>
+          <div class="stat-value">1.9.0</div>
           <div class="stat-sub">Latest release</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Total Pages</div>
-          <div class="stat-value">4</div>
-          <div class="stat-sub">index, docs, changelog, admin</div>
+          <div class="stat-value">5</div>
+          <div class="stat-sub">index, docs, changelog, admin, vibe-codex</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Deployments</div>
-          <div class="stat-value">10</div>
+          <div class="stat-value">14</div>
           <div class="stat-sub">Vercel production</div>
         </div>
         <div class="stat-card">
@@ -906,6 +909,10 @@
             <span class="quick-link-icon">📋</span> Changelog Page
             <span class="quick-link-arrow">↗</span>
           </a>
+          <a href="vibe-codex.html" target="_blank" class="quick-link">
+            <span class="quick-link-icon">⚡</span> Vibe Codex Page
+            <span class="quick-link-arrow">↗</span>
+          </a>
           <a href="https://www.genevadaugdaug.com" target="_blank" class="quick-link">
             <span class="quick-link-icon">🚀</span> Live Production Site
             <span class="quick-link-arrow">↗</span>
@@ -920,33 +927,33 @@
           <div class="dash-card-title">🕒 Recent Activity</div>
           <div class="recent-item">
             <div class="recent-dot dot-purple"></div>
-            <div class="recent-text"><strong>Stack cleanup</strong>: removed node_modules, package files, fixed stale docs</div>
-            <div class="recent-date">Today</div>
+            <div class="recent-text"><strong>Space Grotesk font</strong>: Vibe Codex title updated with purple gradient + glow</div>
+            <div class="recent-date">May 31</div>
           </div>
           <div class="recent-item">
             <div class="recent-dot dot-blue"></div>
-            <div class="recent-text"><strong>Password gate</strong> added to admin.html with session memory</div>
-            <div class="recent-date">May 17</div>
-          </div>
-          <div class="recent-item">
-            <div class="recent-dot dot-purple"></div>
-            <div class="recent-text"><strong>Google Fonts removed</strong>: switched to system font stack on all 4 pages</div>
-            <div class="recent-date">May 17</div>
-          </div>
-          <div class="recent-item">
-            <div class="recent-dot dot-blue"></div>
-            <div class="recent-text"><strong>vercel.json</strong> added: cache headers for images, CSS, and HTML</div>
-            <div class="recent-date">May 17</div>
+            <div class="recent-text"><strong>Description updated</strong>: catchy copy on Vibe Codex — "From spark to shipped"</div>
+            <div class="recent-date">May 31</div>
           </div>
           <div class="recent-item">
             <div class="recent-dot dot-green"></div>
-            <div class="recent-text"><strong>WebP portrait</strong>: gnv-nobg.webp — 89% smaller with PNG fallback</div>
-            <div class="recent-date">May 17</div>
+            <div class="recent-text"><strong>Solid card backgrounds</strong>: Vibe Codex cards set to #0d1120</div>
+            <div class="recent-date">May 31</div>
+          </div>
+          <div class="recent-item">
+            <div class="recent-dot dot-purple"></div>
+            <div class="recent-text"><strong>Vibe Codex page</strong>: new /vibe-codex with 7 project cards and doc modals</div>
+            <div class="recent-date">May 31</div>
           </div>
           <div class="recent-item">
             <div class="recent-dot dot-orange"></div>
-            <div class="recent-text"><strong>favicon.svg</strong> added: custom GD purple gradient icon</div>
-            <div class="recent-date">May 17</div>
+            <div class="recent-text"><strong>cleanUrls</strong> added to vercel.json — .html-free URLs site-wide</div>
+            <div class="recent-date">May 31</div>
+          </div>
+          <div class="recent-item">
+            <div class="recent-dot dot-blue"></div>
+            <div class="recent-text"><strong>Stack cleanup</strong>: removed node_modules, package files, fixed stale docs</div>
+            <div class="recent-date">May 19</div>
           </div>
         </div>
       </div>
@@ -1115,13 +1122,68 @@
 
       <div class="timeline-wrap">
 
-        <!-- v1.8.0 -->
+        <!-- v1.9.0 -->
         <div class="tl-block">
           <div class="tl-dot latest"></div>
           <div class="tl-header">
+            <span class="tl-version">v1.9.0</span>
+            <span class="tl-vname">Vibe Codex</span>
+            <span class="v-badge v-latest">Latest</span>
+            <span class="tl-date">May 31, 2026</span>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">📄 New Page</div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>vibe-codex.html</strong>: new page at <code>/vibe-codex</code> — 7 project cards with status badges, tech stacks, and documentation modals</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-added">Added</span>
+              <span class="change-row-text"><strong>cleanUrls</strong> in vercel.json — all pages accessible without <code>.html</code> extension</span>
+            </div>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">🎨 Design & UI</div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>Space Grotesk font</strong>: page title uses Space Grotesk 800 with purple gradient + violet glow</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-new">New</span>
+              <span class="change-row-text"><strong>Code lab background</strong>: CSS dot grid + 22 slowly drifting code glyphs at very low opacity</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-fix">Fix</span>
+              <span class="change-row-text"><strong>Solid cards</strong>: project card backgrounds set to #0d1120 — dot grid no longer bleeds through</span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-fix">Fix</span>
+              <span class="change-row-text"><strong>Description</strong>: updated to "From spark to shipped. Real apps and tools built fast, deployed clean."</span>
+            </div>
+          </div>
+
+          <div class="tl-card">
+            <div class="tl-cat">🚀 Deployment</div>
+            <div class="change-row">
+              <span class="cpill cp-deploy">Deploy</span>
+              <span class="change-row-text">Pushed to <strong>GitHub</strong>: branch <code>portfolio-revamp</code></span>
+            </div>
+            <div class="change-row">
+              <span class="cpill cp-deploy">Deploy</span>
+              <span class="change-row-text">Promoted to <strong>Vercel production</strong> — live at genevadaugdaug.com/vibe-codex (4 deploys this version)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- v1.8.0 -->
+        <div class="tl-block">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
             <span class="tl-version">v1.8.0</span>
             <span class="tl-vname">Stack Cleanup</span>
-            <span class="v-badge v-latest">Latest</span>
+            <span class="v-badge v-feature">Feature</span>
             <span class="tl-date">May 19, 2026</span>
           </div>
 
@@ -1557,6 +1619,7 @@
 ├── <span class="t-b">documentation.html</span>  <span class="t-d"># Docs page</span>
 ├── <span class="t-b">changelog.html</span>      <span class="t-d"># Release history</span>
 ├── <span class="t-b">admin.html</span>          <span class="t-d"># This admin panel</span>
+├── <span class="t-b">vibe-codex.html</span>     <span class="t-d"># Vibe Codex — project showcase</span>
 └── <span class="t-g">.gitignore</span>          <span class="t-d"># Vercel generated</span></pre>
           </div>
 
