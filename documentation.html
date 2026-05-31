@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation - Geneva Daugdaug Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #04050d;
+      --surface:    #0a0d1a;
+      --card:       rgba(255,255,255,0.04);
+      --border:     rgba(255,255,255,0.08);
+      --purple-1:   #6d28d9;
+      --purple-2:   #8b5cf6;
+      --purple-3:   #a78bfa;
+      --purple-4:   #c4b5fd;
+      --text:       #f1f5f9;
+      --muted:      #94a3b8;
+      --dim:        #475569;
+      --green:      #22c55e;
+      --blue:       #60a5fa;
+      --orange:     #fb923c;
+      --radius:     14px;
+      --sidebar-w:  260px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    .sidebar-logo {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--purple-3), var(--purple-4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.25rem;
+    }
+    .sidebar-sub {
+      font-size: 0.72rem;
+      color: var(--dim);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .nav-group { margin-bottom: 1.75rem; }
+    .nav-group-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+    }
+    .nav-item {
+      display: block;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      margin-bottom: 0.15rem;
+    }
+    .nav-item:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-item.active { color: var(--purple-3); background: rgba(139,92,246,0.1); }
+
+    .sidebar-version {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--dim);
+    }
+    .sidebar-version span { color: var(--green); font-weight: 600; }
+
+    /* ── MAIN ── */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 3.5rem 4rem 6rem;
+      max-width: 860px;
+    }
+
+    /* ── SECTIONS ── */
+    .doc-section { margin-bottom: 5rem; }
+
+    .doc-section h1 {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 0.5rem;
+      line-height: 1.15;
+    }
+    .doc-section h2 {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      margin: 2.5rem 0 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .doc-section h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--purple-3);
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    .doc-lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 640px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* Divider */
+    .divider {
+      width: 40px; height: 3px;
+      background: linear-gradient(90deg, var(--purple-2), var(--purple-4));
+      border-radius: 2px;
+      margin: 0.75rem 0 1.5rem;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 50px;
+      letter-spacing: 0.3px;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .badge-purple { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); color: var(--purple-3); }
+    .badge-green  { background: rgba(34,197,94,0.12);  border: 1px solid rgba(34,197,94,0.3);  color: #4ade80; }
+    .badge-blue   { background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.3); color: var(--blue); }
+    .badge-orange { background: rgba(251,146,60,0.12); border: 1px solid rgba(251,146,60,0.3); color: var(--orange); }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .doc-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.4rem;
+      transition: border-color 0.2s;
+    }
+    .doc-card:hover { border-color: rgba(139,92,246,0.3); }
+    .doc-card-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .doc-card-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.3rem; }
+    .doc-card-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.55; margin: 0; }
+
+    /* Table */
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.85rem;
+    }
+    .doc-table th {
+      background: rgba(139,92,246,0.08);
+      border: 1px solid var(--border);
+      padding: 0.65rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.78rem;
+      color: var(--purple-3);
+      letter-spacing: 0.3px;
+    }
+    .doc-table td {
+      border: 1px solid var(--border);
+      padding: 0.65rem 1rem;
+      color: var(--muted);
+      vertical-align: top;
+    }
+    .doc-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .doc-table code {
+      background: rgba(139,92,246,0.12);
+      color: var(--purple-3);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.78rem;
+    }
+
+    /* Code blocks */
+    .code-block {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      overflow-x: auto;
+      position: relative;
+    }
+    .code-block pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #e2e8f0;
+      margin: 0;
+    }
+    .code-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 0.5rem;
+    }
+    .token-purple { color: var(--purple-3); }
+    .token-blue   { color: #7dd3fc; }
+    .token-green  { color: #86efac; }
+    .token-orange { color: #fdba74; }
+    .token-gray   { color: #64748b; }
+
+    /* Callout */
+    .callout {
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .callout-info    { background: rgba(96,165,250,0.07);  border: 1px solid rgba(96,165,250,0.2);  color: #bfdbfe; }
+    .callout-tip     { background: rgba(34,197,94,0.07);   border: 1px solid rgba(34,197,94,0.2);   color: #bbf7d0; }
+    .callout-warning { background: rgba(251,146,60,0.07);  border: 1px solid rgba(251,146,60,0.2);  color: #fed7aa; }
+
+    /* Color palette */
+    .color-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.25rem 0; }
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .swatch-box {
+      width: 56px; height: 56px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .swatch-label { font-size: 0.68rem; color: var(--muted); font-family: 'Courier New', Courier, monospace; text-align: center; }
+
+    /* Progress bar preview */
+    .skill-preview {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+    }
+    .skill-row-preview { margin-bottom: 1rem; }
+    .skill-row-preview:last-child { margin-bottom: 0; }
+    .skill-head-p { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: 0.82rem; font-weight: 600; }
+    .skill-pct-p { color: var(--purple-3); font-size: 0.78rem; }
+    .skill-bar-p { background: rgba(255,255,255,0.06); border-radius: 50px; height: 6px; }
+    .skill-fill-p { height: 100%; border-radius: 50px; background: linear-gradient(90deg, var(--purple-1), var(--purple-3)); }
+
+    /* Section anchor link */
+    h2 { scroll-margin-top: 2rem; }
+    h3 { scroll-margin-top: 2rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 2rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">Geneva Daugdaug</div>
+    <div class="sidebar-sub">Portfolio Documentation</div>
+
+    <nav>
+      <div class="nav-group">
+        <div class="nav-group-label">Getting Started</div>
+        <a href="#overview" class="nav-item active">Overview</a>
+        <a href="#tech-stack" class="nav-item">Tech Stack</a>
+        <a href="#file-structure" class="nav-item">File Structure</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Site Sections</div>
+        <a href="#hero" class="nav-item">Hero</a>
+        <a href="#services" class="nav-item">Services</a>
+        <a href="#experience" class="nav-item">Experience</a>
+        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#footer" class="nav-item">Footer</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Design System</div>
+        <a href="#colors" class="nav-item">Colors</a>
+        <a href="#typography" class="nav-item">Typography</a>
+        <a href="#components" class="nav-item">Components</a>
+        <a href="#animations" class="nav-item">Animations</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Deployment</div>
+        <a href="#vercel" class="nav-item">Vercel</a>
+        <a href="#github" class="nav-item">GitHub</a>
+        <a href="#customization" class="nav-item">Customization</a>
+      </div>
+    </nav>
+
+    <div class="sidebar-version">
+      Version <span>1.0.0</span> · May 2025
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- OVERVIEW -->
+    <div class="doc-section" id="overview">
+      <h1>Portfolio Documentation</h1>
+      <div class="divider"></div>
+      <p class="doc-lead">
+        Complete reference for the Geneva Daugdaug personal portfolio website, a modern, dark-themed single-page application built with pure HTML, CSS, and JavaScript.
+      </p>
+
+      <div class="card-grid">
+        <div class="doc-card">
+          <div class="doc-card-icon">⚡</div>
+          <div class="doc-card-title">No Build Step</div>
+          <p class="doc-card-desc">Plain HTML/CSS/JS: open directly in any browser, no tools required.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-icon">📱</div>
+          <div class="doc-card-title">Fully Responsive</div>
+          <p class="doc-card-desc">Adapts from desktop down to 320px mobile screens.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-icon">🎨</div>
+          <div class="doc-card-title">Dark Luxury Theme</div>
+          <p class="doc-card-desc">Purple neon gradients, glassmorphism, and soft glows throughout.</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-icon">🚀</div>
+          <div class="doc-card-title">Deployed on Vercel</div>
+          <p class="doc-card-desc">Live at personal-website-liard-rho-23.vercel.app</p>
+        </div>
+      </div>
+
+      <h2 id="tech-stack">Tech Stack</h2>
+      <table class="doc-table">
+        <thead>
+          <tr><th>Technology</th><th>Purpose</th><th>Version / Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>HTML5</td><td>Page structure and semantics</td><td>Native</td></tr>
+          <tr><td>CSS3</td><td>Styling, animations, glassmorphism</td><td>Native</td></tr>
+          <tr><td>JavaScript (ES6+)</td><td>Scroll animations, parallax, skill bars</td><td>Native</td></tr>
+          <tr><td>System Font Stack</td><td>Headings and display text</td><td>OS native (no external request)</td></tr>
+          <tr><td>System Font Stack</td><td>Body and UI text</td><td>OS native (no external request)</td></tr>
+          <tr><td>IntersectionObserver API</td><td>Scroll-triggered reveal animations</td><td>Browser native</td></tr>
+          <tr><td>CSS backdrop-filter</td><td>Glassmorphism blur effects</td><td>Modern browsers</td></tr>
+          <tr><td>Vercel</td><td>Hosting and deployment</td><td>vercel.com</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="file-structure">File Structure</h2>
+      <div class="code-block">
+        <div class="code-label">Directory</div>
+        <pre>
+personal-website/
+├── <span class="token-blue">index.html</span>          <span class="token-gray"># Main portfolio page (all-in-one)</span>
+├── <span class="token-blue">documentation.html</span>  <span class="token-gray"># This file</span>
+├── <span class="token-green">.gitignore</span>          <span class="token-gray"># Git ignore rules (Vercel generated)</span>
+└── <span class="token-orange">.vercel/</span>            <span class="token-gray"># Vercel project config (auto-generated)</span>
+        </pre>
+      </div>
+
+      <div class="callout callout-info">
+        <span class="callout-icon">ℹ️</span>
+        <span>All styles and scripts are embedded inline inside <code>index.html</code>. No external CSS or JS files are needed. This keeps deployment simple and eliminates loading dependencies.</span>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="doc-section" id="hero">
+      <h1>Hero Section</h1>
+      <div class="divider"></div>
+      <p class="doc-lead">The full-viewport landing section with a two-column layout with text on the left, portrait on the right.</p>
+
+      <h2>Structure</h2>
+      <table class="doc-table">
+        <thead><tr><th>Element</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Availability badge</td><td>Green pulsing dot + "Available for Freelance Work" text</td></tr>
+          <tr><td>Headline</td><td>"Hi, I'm <strong>Geneva</strong> Designer &amp; VA" with name highlighted in purple gradient</td></tr>
+          <tr><td>Subtext</td><td>One-line value proposition for potential clients</td></tr>
+          <tr><td>CTA Buttons</td><td>"View My Services" (purple fill) + "Work With Me" (outline)</td></tr>
+          <tr><td>Social Pills</td><td>LinkedIn, YouTube, Upwork with SVG icons</td></tr>
+          <tr><td>Portrait</td><td>Circular image with spinning gradient ring and glow</td></tr>
+          <tr><td>Stat Chips</td><td>Floating glassmorphism cards: "Top Designer" + "5-Star Rated"</td></tr>
+          <tr><td>Particles</td><td>8 animated purple dots floating upward around the portrait</td></tr>
+          <tr><td>Background</td><td>3 radial gradient orbs + dot-grid pattern with parallax on mouse move</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Portrait Animation</h3>
+      <p>The portrait uses a <code>conic-gradient</code> spinning ring with a 6-second CSS animation, layered over a radial glow that pulses using <code>@keyframes glow-pulse</code>.</p>
+
+      <h3>Mouse Parallax</h3>
+      <p>The three background orbs respond to mouse movement via a <code>mousemove</code> event listener, shifting at different speeds (0.6x and 0.4x) for a subtle depth effect.</p>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="doc-section" id="services">
+      <h1>Services Section</h1>
+      <div class="divider"></div>
+      <p class="doc-lead">Six glassmorphism cards displayed in a responsive grid showcasing the freelancer's core offerings.</p>
+
+      <h2>Service Cards</h2>
+      <table class="doc-table">
+        <thead><tr><th>Card</th><th>Icon</th><th>Tags</th></tr></thead>
+        <tbody>
+          <tr><td>Graphics Design</td><td>🎨</td><td>Photoshop, Illustrator, Canva</td></tr>
+          <tr><td>Website Development</td><td>🌐</td><td>WordPress, Elementor, Shopify, Wix</td></tr>
+          <tr><td>Domains &amp; DNS</td><td>📡</td><td>A Records, CNAME, MX / TXT</td></tr>
+          <tr><td>Marketing &amp; Tools</td><td>📣</td><td>Kajabi, Mailchimp, Zapier, Zoho</td></tr>
+          <tr><td>Project Management</td><td>📋</td><td>ClickUp, Asana, Podio</td></tr>
+          <tr><td>Productivity &amp; Support</td><td>🖥️</td><td>M365, Freshdesk, Zendesk</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Card Hover Effect</h3>
+      <p>On hover, each card lifts <code>translateY(-6px)</code>, the border becomes subtly purple, a top-edge neon line fades in, and an inner radial glow appears, all using CSS transitions.</p>
+
+      <h3>Grid Breakpoints</h3>
+      <table class="doc-table">
+        <thead><tr><th>Screen Width</th><th>Columns</th></tr></thead>
+        <tbody>
+          <tr><td>&gt; 1200px</td><td>6 columns</td></tr>
+          <tr><td>900px – 1200px</td><td>3 columns</td></tr>
+          <tr><td>640px – 900px</td><td>2 columns</td></tr>
+          <tr><td>&lt; 420px</td><td>1 column</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="doc-section" id="experience">
+      <h1>Experience Section</h1>
+      <div class="divider"></div>
+      <p class="doc-lead">A two-column layout with a glowing vertical timeline on the left and stats cards on the right.</p>
+
+      <h2>Timeline Entries</h2>
+      <table class="doc-table">
+        <thead><tr><th>Role</th><th>Organization</th><th>Icon</th></tr></thead>
+        <tbody>
+          <tr><td>Graphics Designer / Virtual Assistant</td><td>Worldwide Holdings, US</td><td>💼</td></tr>
+          <tr><td>IT Administrator</td><td>Municipality of Cordova</td><td>🏛️</td></tr>
+          <tr><td>Web Developer</td><td>Cebu Web Designs, Cebu City</td><td>💻</td></tr>
+          <tr><td>Technical Virtual Assistant</td><td>Jezweb Pty Ltd, Australia</td><td>🔧</td></tr>
+          <tr><td>Microsoft 365 IT Admin Support</td><td>Microsoft, US</td><td>🪟</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Stats Cards</h2>
+      <div class="card-grid">
+        <div class="doc-card">
+          <div class="doc-card-icon">🗓️</div>
+          <div class="doc-card-title">5+ Years</div>
+          <p class="doc-card-desc">Years of Experience</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-icon">🚀</div>
+          <div class="doc-card-title">50+</div>
+          <p class="doc-card-desc">Projects Completed</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-icon">💯</div>
+          <div class="doc-card-title">100%</div>
+          <p class="doc-card-desc">Client Satisfaction</p>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-icon">🌏</div>
+          <div class="doc-card-title">24/7</div>
+          <p class="doc-card-desc">Reliable Support</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="doc-section" id="skills">
+      <h1>Skills Section</h1>
+      <div class="divider"></div>
+      <p class="doc-lead">A large glass panel containing six animated horizontal progress bars, arranged in a two-column grid.</p>
+
+      <h2>Skill Proficiency</h2>
+      <div class="skill-preview">
+        <div class="skill-row-preview">
+          <div class="skill-head-p"><span>Canva</span><span class="skill-pct-p">98%</span></div>
+          <div class="skill-bar-p"><div class="skill-fill-p" style="width:98%"></div></div>
+        </div>
+        <div class="skill-row-preview">
+          <div class="skill-head-p"><span>WordPress + Elementor</span><span class="skill-pct-p">95%</span></div>
+          <div class="skill-bar-p"><div class="skill-fill-p" style="width:95%"></div></div>
+        </div>
+        <div class="skill-row-preview">
+          <div class="skill-head-p"><span>Adobe Photoshop</span><span class="skill-pct-p">92%</span></div>
+          <div class="skill-bar-p"><div class="skill-fill-p" style="width:92%"></div></div>
+        </div>
+        <div class="skill-row-preview">
+          <div class="skill-head-p"><span>Virtual Assistance</span><span class="skill-pct-p">90%</span></div>
+          <div class="skill-bar-p"><div class="skill-fill-p" style="width:90%"></div></div>
+        </div>
+        <div class="skill-row-preview">
+          <div class="skill-head-p"><span>DNS &amp; Domain Management</span><span class="skill-pct-p">88%</span></div>
+          <div class="skill-bar-p"><div class="skill-fill-p" style="width:88%"></div></div>
+        </div>
+        <div class="skill-row-preview">
+          <div class="skill-head-p"><span>Project Management Tools</span><span class="skill-pct-p">85%</span></div>
+          <div class="skill-bar-p"><div class="skill-fill-p" style="width:85%"></div></div>
+        </div>
+      </div>
+
+      <h3>Animation Behavior</h3>
+      <p>Skill bars start at <code>width: 0</code> and animate to their target width when the section scrolls into view (30% threshold). Each bar animates in with a 120ms stagger using <code>setTimeout</code>. A glowing tip at the end of each bar pulses via <code>@keyframes skill-shine</code>.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="doc-section" id="footer">
+      <h1>Footer</h1>
+      <div class="divider"></div>
+      <p>Minimal footer with branding on the left and social links on the right.</p>
+      <table class="doc-table">
+        <thead><tr><th>Element</th><th>Content</th></tr></thead>
+        <tbody>
+          <tr><td>Brand name</td><td>Geneva Daugdaug (gradient text)</td></tr>
+          <tr><td>Copyright</td><td>© 2025 Geneva Daugdaug. All rights reserved.</td></tr>
+          <tr><td>LinkedIn</td><td>linkedin.com/in/geneva-daugdaug-bb7b15140</td></tr>
+          <tr><td>YouTube</td><td>youtube.com/channel/UCPqZDycrBTsmSQRcVuM3-6Q</td></tr>
+          <tr><td>Upwork</td><td>upwork.com/freelancers/~018397ada8abcbda99</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- COLORS -->
+    <div class="doc-section" id="colors">
+      <h1>Color System</h1>
+      <div class="divider"></div>
+      <p class="doc-lead">The palette is defined as CSS custom properties on <code>:root</code>, making global color changes a one-line edit.</p>
+
+      <h2>Background</h2>
+      <div class="color-row">
+        <div class="color-swatch"><div class="swatch-box" style="background:#04050d;"></div><div class="swatch-label">--bg-deep<br/>#04050d</div></div>
+        <div class="color-swatch"><div class="swatch-box" style="background:#070b18;"></div><div class="swatch-label">--bg-navy<br/>#070b18</div></div>
+        <div class="color-swatch"><div class="swatch-box" style="background:rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.15);"></div><div class="swatch-label">--glass<br/>rgba white 4%</div></div>
+      </div>
+
+      <h2>Accent: Purple</h2>
+      <div class="color-row">
+        <div class="color-swatch"><div class="swatch-box" style="background:#6d28d9;"></div><div class="swatch-label">--purple-1<br/>#6d28d9</div></div>
+        <div class="color-swatch"><div class="swatch-box" style="background:#8b5cf6;"></div><div class="swatch-label">--purple-2<br/>#8b5cf6</div></div>
+        <div class="color-swatch"><div class="swatch-box" style="background:#a78bfa;"></div><div class="swatch-label">--purple-3<br/>#a78bfa</div></div>
+        <div class="color-swatch"><div class="swatch-box" style="background:#c4b5fd;"></div><div class="swatch-label">--purple-4<br/>#c4b5fd</div></div>
+      </div>
+
+      <h2>Text</h2>
+      <div class="color-row">
+        <div class="color-swatch"><div class="swatch-box" style="background:#f1f5f9;"></div><div class="swatch-label">--text<br/>#f1f5f9</div></div>
+        <div class="color-swatch"><div class="swatch-box" style="background:#94a3b8;"></div><div class="swatch-label">--muted<br/>#94a3b8</div></div>
+        <div class="color-swatch"><div class="swatch-box" style="background:#4a5568;"></div><div class="swatch-label">--dim<br/>#4a5568</div></div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="doc-section" id="typography">
+      <h1>Typography</h1>
+      <div class="divider"></div>
+
+      <table class="doc-table">
+        <thead><tr><th>Font</th><th>Weights</th><th>Used For</th></tr></thead>
+        <tbody>
+          <tr><td>-apple-system, BlinkMacSystemFont, 'Segoe UI'…</td><td>800, 900</td><td>All headings, logo, section titles, stat numbers</td></tr>
+          <tr><td>-apple-system, BlinkMacSystemFont, 'Segoe UI'…</td><td>300–700</td><td>Body text, nav links, descriptions, tags, buttons</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Type Scale</h3>
+      <table class="doc-table">
+        <thead><tr><th>Element</th><th>Size</th><th>Weight</th></tr></thead>
+        <tbody>
+          <tr><td>Hero headline</td><td>clamp(2.6rem, 5.5vw, 4.2rem)</td><td>900</td></tr>
+          <tr><td>Section title</td><td>clamp(1.9rem, 4vw, 2.8rem)</td><td>900</td></tr>
+          <tr><td>Card title</td><td>0.9rem</td><td>700</td></tr>
+          <tr><td>Body / description</td><td>0.88rem – 1.05rem</td><td>400</td></tr>
+          <tr><td>Tags / labels</td><td>0.67rem – 0.75rem</td><td>600–700</td></tr>
+          <tr><td>Section eyebrow</td><td>0.72rem</td><td>700 · 3px letter-spacing · uppercase</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- COMPONENTS -->
+    <div class="doc-section" id="components">
+      <h1>UI Components</h1>
+      <div class="divider"></div>
+
+      <h2>Buttons</h2>
+      <table class="doc-table">
+        <thead><tr><th>Class</th><th>Style</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td><code>.btn-fill</code></td><td>Purple gradient fill, white text, glow shadow</td><td>Primary CTA (View My Services)</td></tr>
+          <tr><td><code>.btn-outline</code></td><td>Transparent + glass border, hover turns purple</td><td>Secondary CTA (Work With Me)</td></tr>
+          <tr><td><code>.nav-hire</code></td><td>Small pill, purple gradient</td><td>Nav bar "Hire Me"</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Glassmorphism Cards</h2>
+      <p>Cards use <code>backdrop-filter: blur(12px)</code>, a semi-transparent white background (<code>rgba(255,255,255,0.04)</code>), and a subtle white border. They're supported in all modern browsers (Chrome 76+, Safari 9+, Firefox 103+).</p>
+
+      <div class="callout callout-warning">
+        <span class="callout-icon">⚠️</span>
+        <span><strong>Firefox note:</strong> <code>backdrop-filter</code> requires enabling <code>layout.css.backdrop-filter.enabled</code> in older Firefox versions. All modern Firefox (103+) supports it natively.</span>
+      </div>
+
+      <h2>Tags / Badges</h2>
+      <p>Rounded pill tags inside service cards use <code>rgba(109,40,217,0.12)</code> background with a subtle purple border. Size: <code>0.67rem</code>, weight <code>700</code>.</p>
+
+      <h2>Social Pills</h2>
+      <p>Inline SVG icons with text, glass background, and hover border-color transition to purple. Used in both the hero and footer.</p>
+    </div>
+
+    <!-- ANIMATIONS -->
+    <div class="doc-section" id="animations">
+      <h1>Animations</h1>
+      <div class="divider"></div>
+
+      <table class="doc-table">
+        <thead><tr><th>Animation</th><th>Trigger</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td>Scroll reveal</td><td>IntersectionObserver (12% threshold)</td><td>Elements fade up from <code>translateY(30px)</code> with 0.7s ease. Delay classes: <code>.reveal-delay-1</code> through <code>5</code> add 100ms increments.</td></tr>
+          <tr><td>Skill bars</td><td>IntersectionObserver (30% threshold)</td><td>Width animates from 0 to target % with 1.4s cubic-bezier. Each bar staggered by 120ms.</td></tr>
+          <tr><td>Portrait ring spin</td><td>Always on</td><td>Conic gradient rotates 360° in 6s linear infinite.</td></tr>
+          <tr><td>Portrait glow pulse</td><td>Always on</td><td>Radial glow scales 1→1.05 every 3s ease-in-out.</td></tr>
+          <tr><td>Floating particles</td><td>Always on</td><td>8 dots float upward with varying durations (3–5.5s) and delays.</td></tr>
+          <tr><td>Stat chips float</td><td>Always on</td><td>Chips bob up/down 8px over 4s, staggered by 1.5s.</td></tr>
+          <tr><td>Mouse parallax</td><td>mousemove event</td><td>Orbs shift ±20px relative to cursor position at 0.6x and 0.4x speed.</td></tr>
+          <tr><td>Availability dot pulse</td><td>Always on</td><td>Green dot glow pulses with box-shadow every 2s.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <span>To disable animations for accessibility (reduced motion), add a <code>@media (prefers-reduced-motion: reduce)</code> block that sets all transition and animation durations to <code>0.01ms</code>.</span>
+      </div>
+    </div>
+
+    <!-- VERCEL -->
+    <div class="doc-section" id="vercel">
+      <h1>Vercel Deployment</h1>
+      <div class="divider"></div>
+      <p class="doc-lead">The site is deployed to Vercel as a static site. No framework or build configuration is needed.</p>
+
+      <h2>Live URLs</h2>
+      <table class="doc-table">
+        <thead><tr><th>Type</th><th>URL</th></tr></thead>
+        <tbody>
+          <tr><td>Production (aliased)</td><td>personal-website-liard-rho-23.vercel.app</td></tr>
+          <tr><td>Vercel Dashboard</td><td>vercel.com/genevadaugdaug2-9506s-projects/personal-website</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Re-deploying</h2>
+      <p>To push an updated version to production, run the following from the project folder:</p>
+      <div class="code-block">
+        <div class="code-label">Terminal</div>
+        <pre><span class="token-green">vercel</span> <span class="token-blue">--yes</span></pre>
+      </div>
+
+      <div class="callout callout-info">
+        <span class="callout-icon">ℹ️</span>
+        <span>Vercel CLI was installed globally via <code>npm install -g vercel</code> and authenticated with the <code>genevadaugdaug2-9506</code> account. The <code>.vercel/</code> folder stores the project link so future deploys go to the same project automatically.</span>
+      </div>
+    </div>
+
+    <!-- GITHUB -->
+    <div class="doc-section" id="github">
+      <h1>GitHub Repository</h1>
+      <div class="divider"></div>
+
+      <table class="doc-table">
+        <thead><tr><th>Detail</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Repository</td><td>github.com/ghub-geneva/personal_website</td></tr>
+          <tr><td>Default branch</td><td><code>main</code> (base, README only)</td></tr>
+          <tr><td>Feature branch</td><td><code>portfolio-revamp</code> (full site)</td></tr>
+          <tr><td>Open PR</td><td>PR #1: "Add modern dark-themed portfolio site"</td></tr>
+          <tr><td>Remote protocol</td><td>HTTPS</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Branch Strategy</h2>
+      <p><code>main</code> is the stable base branch. All new features and changes should be developed on a separate branch and merged via pull request. The current open PR (#1) adds the full portfolio site.</p>
+
+      <h2>Common Git Commands</h2>
+      <div class="code-block">
+        <div class="code-label">Terminal</div>
+        <pre>
+<span class="token-gray"># Switch to the feature branch</span>
+<span class="token-green">git</span> checkout portfolio-revamp
+
+<span class="token-gray"># Stage and commit changes</span>
+<span class="token-green">git</span> add index.html
+<span class="token-green">git</span> commit -m <span class="token-orange">"your message"</span>
+
+<span class="token-gray"># Push to GitHub</span>
+<span class="token-green">git</span> push origin portfolio-revamp
+        </pre>
+      </div>
+    </div>
+
+    <!-- CUSTOMIZATION -->
+    <div class="doc-section" id="customization">
+      <h1>Customization Guide</h1>
+      <div class="divider"></div>
+      <p class="doc-lead">All content and design tokens live inside <code>index.html</code>. Here's where to look for common changes.</p>
+
+      <h2>Changing Colors</h2>
+      <p>Edit the <code>:root</code> CSS variables at the top of the <code>&lt;style&gt;</code> block:</p>
+      <div class="code-block">
+        <div class="code-label">CSS :root variables</div>
+        <pre>
+<span class="token-purple">:root</span> {
+  <span class="token-blue">--purple-1</span>: <span class="token-orange">#6d28d9</span>;   <span class="token-gray">/* darkest purple */</span>
+  <span class="token-blue">--purple-2</span>: <span class="token-orange">#8b5cf6</span>;   <span class="token-gray">/* main accent */</span>
+  <span class="token-blue">--purple-3</span>: <span class="token-orange">#a78bfa</span>;   <span class="token-gray">/* light accent */</span>
+  <span class="token-blue">--purple-4</span>: <span class="token-orange">#c4b5fd</span>;   <span class="token-gray">/* lightest / text highlight */</span>
+}
+        </pre>
+      </div>
+
+      <h2>Updating Profile Photo</h2>
+      <p>Find the <code>&lt;img&gt;</code> tag inside <code>.portrait-img</code> and replace the <code>src</code>:</p>
+      <div class="code-block">
+        <div class="code-label">HTML</div>
+        <pre>
+&lt;<span class="token-blue">img</span> <span class="token-purple">src</span>=<span class="token-orange">"YOUR_PHOTO_URL_HERE"</span> <span class="token-purple">alt</span>=<span class="token-orange">"Geneva Daugdaug"</span> /&gt;
+        </pre>
+      </div>
+
+      <h2>Updating Social Links</h2>
+      <p>Search for the three <code>.social-pill</code> anchor tags and update the <code>href</code> values for LinkedIn, YouTube, and Upwork.</p>
+
+      <h2>Adding a New Service Card</h2>
+      <p>Duplicate an existing <code>.service-card</code> div inside <code>#services</code> and update the icon, title, description, and tags. The CSS grid will automatically reflow.</p>
+
+      <h2>Updating Skill Percentages</h2>
+      <p>Each skill bar has a <code>data-width</code> attribute: change the number to update both the bar and the displayed percentage:</p>
+      <div class="code-block">
+        <div class="code-label">HTML</div>
+        <pre>
+&lt;<span class="token-blue">span</span> <span class="token-purple">class</span>=<span class="token-orange">"skill-pct"</span>&gt;<span class="token-green">98%</span>&lt;/<span class="token-blue">span</span>&gt;
+&lt;<span class="token-blue">div</span> <span class="token-purple">class</span>=<span class="token-orange">"skill-fill"</span> <span class="token-purple">data-width</span>=<span class="token-orange">"98"</span>&gt;&lt;/<span class="token-blue">div</span>&gt;
+        </pre>
+      </div>
+
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <span>After making changes, run <code>vercel --yes</code> from the project folder to push the updated site to production instantly.</span>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Highlight active nav item on scroll
+    const sections = document.querySelectorAll('[id]');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navItems.forEach(item => item.classList.remove('active'));
+          const active = document.querySelector(`.nav-item[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
